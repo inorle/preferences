@@ -16,12 +16,13 @@ const FormPage = ({setGameStage}) => {
     }
     const SendPreferences = async () => {
         try {
+            const preferences = listofPref.map((el)=>el.pref)
             const sent = await fetch('/api/initialsubmit', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ name: name, preferences: listofPref })
+                body: JSON.stringify({ name: name, preferences: preferences, game_id:1 })
             })
         }
         catch (error) {

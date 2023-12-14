@@ -1,24 +1,22 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use(cors({ credentials: true, methods: ['POST', 'GET', 'PATCH'], origin: '*' }));
 
 app.use(express.json());
 app.use(express.urlencoded());
 
-
+app.post('/api/initialsubmit', (req, res) => {
+  console.log(req.body)
+  return res.status(200).json()
+})
 
 app.use(express.static(path.join(__dirname, '../build')));
 
-//send static html w client side routing as well
-app.get("/*",  (req, res, ) => {
-  res.sendFile(path.resolve(__dirname, '../build', 'index.html'), function (err) {
-    if (err) {
-      console.log(err);
-    }
-  });
-});
+
 
 //error handling for errors in middleware
 app.use((err, req, res, next) => {

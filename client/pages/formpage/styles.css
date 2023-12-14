@@ -1,0 +1,9 @@
+#form{
+    background-color: blue;
+    width: 40%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 5pt;
+    padding: 10pt;
+}
